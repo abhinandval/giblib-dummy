@@ -23,6 +23,9 @@ class _NormalVideoPlayerState extends State<NormalVideoPlayer> {
         maxCacheSize: 10 * 1024 * 1024,
         maxCacheFileSize: 10 * 1024 * 1024,
       ),
+      notificationConfiguration: const BetterPlayerNotificationConfiguration(
+        showNotification: true,
+      ),
     );
     _betterPlayerController = BetterPlayerController(
       const BetterPlayerConfiguration(),
