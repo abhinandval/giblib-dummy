@@ -11,6 +11,7 @@ class NormalVideoPlayer extends StatefulWidget {
 
 class _NormalVideoPlayerState extends State<NormalVideoPlayer> {
   late final BetterPlayerController _betterPlayerController;
+  final _betterPlayerKey = GlobalKey();
   @override
   void initState() {
     super.initState();
@@ -28,9 +29,14 @@ class _NormalVideoPlayerState extends State<NormalVideoPlayer> {
       ),
     );
     _betterPlayerController = BetterPlayerController(
-      const BetterPlayerConfiguration(),
+      const BetterPlayerConfiguration(
+        controlsConfiguration: BetterPlayerControlsConfiguration(
+          enablePip: true,
+        ),
+      ),
       betterPlayerDataSource: dataSource,
     );
+    _betterPlayerController.setBetterPlayerGlobalKey(_betterPlayerKey);
   }
 
   @override
@@ -39,6 +45,7 @@ class _NormalVideoPlayerState extends State<NormalVideoPlayer> {
       aspectRatio: 16 / 9,
       child: BetterPlayer(
         controller: _betterPlayerController,
+        key: _betterPlayerKey,
       ),
     );
   }
